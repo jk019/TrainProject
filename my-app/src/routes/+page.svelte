@@ -1,2 +1,4 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<h1>hallo</h1>
+<br>
+<p>Willkommen auf der Sensoren-APP</p> 
+<p>hier finden Sie alle Informationen</p>
