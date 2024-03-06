@@ -9,11 +9,10 @@
 	// @ts-ignore
 	function selectWagen(wagen) {
 		selectedWagen = wagen;
-		console.log(data.artists);
 	}
 </script>
 
-<h1>Trains</h1>
+<h1>Sensoren</h1>
 
 
 
