@@ -1,6 +1,6 @@
 import { MongoClient, ObjectId } from 'mongodb';
 import { DB_URI } from '$env/static/private';
-import { Train } from '../types/Train';
+import { invalidateAll } from "$app/navigation";
 
 const client = new MongoClient(DB_URI);
 
@@ -15,8 +15,6 @@ async function getTrains() {
     try {
         const collection = db.collection('train');
 
-        // You can specify a query/filter here
-        // See https://www.mongodb.com/docs/drivers/node/current/fundamentals/crud/query-document/
         const query = {};
 
         // Get all objects that match the query
