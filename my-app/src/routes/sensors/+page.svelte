@@ -1,18 +1,62 @@
 <script>
 	import axios from 'axios';
 	import { createEventDispatcher } from 'svelte';
+	import { writable } from 'svelte/store';
 
 	export let data;
+
+	let selectedWagon = writable(null);
+
+	function selectWagon(wagenId) {
+		selectedWagon.set(wagenId);
+	}
 
 	let selectedWagen = 'Wagen 1'; // Default selected item
 	// @ts-ignore
 	function selectWagen(wagen) {
 		selectedWagen = wagen;
 	}
+
+	function test() {
+		console.log('success');
+	}
 </script>
 
-<h1>Sensoren</h1>
+<!-- Dynamischer Inhalt basierend auf der Auswahl -->
+<nav>
+	{#each data.wagons as wagon}
+		<a
+			href="/wagn{wagon._id}"
+			on:click|preventDefault={() => selectWagon(wagon._id)}
+			class:selected={$selectedWagon === wagon._id}
+			style="cursor: pointer;"
+		>
+			Wagen {wagon._id}
+		</a>
+	{/each}
+</nav>
 
+<!-- Dynamischer Inhalt basierend auf der Auswahl -->
+<div>
+	{#if $selectedWagon}
+		{#each data.wagons as wagon}
+			{#if $selectedWagon === wagon._id}
+				<!-- Inhalt für den ausgewählten Wagen hier einfügen -->
+				<p>Details für Wagen {wagon._id}</p>
+				
+				<!-- Fügen Sie hier Ihre Logik zum Anzeigen von Sektionen und Sensoren basierend auf dem ausgewählten Wagen ein -->
+			{/if}
+		{/each}
+	{:else}
+		<p>Bitte wählen Sie einen Wagen aus.</p>
+	{/if}
+</div>
+
+
+
+
+
+<!-- <h1>Sensoren</h1>
 
 <nav class="nav" style="margin-bottom: 20px;">
 	<a
@@ -36,9 +80,18 @@
 		class:selected={selectedWagen === 'Wagen 3'}
 		style="cursor: pointer;">Wagen 3</a
 	>
+	{#each data.wagons as wagon}
+		<a
+			class="nav-link"
+			href="/wagen{wagon._id}"
+			on:click|preventDefault={() => selectWagen('Wagen ' + wagon._id)}
+			class:selected={selectedWagen === 'Wagen ' + wagon._id}
+			style="cursor: pointer;">Wagen {wagon._id}</a
+		>{/each}
 </nav>
 
-<!-- Conditional Content Rendering -->
+
+
 {#if selectedWagen === 'Wagen 1'}
 	<div class="cabin1">
 		{#each data.sections as section}
@@ -324,66 +377,8 @@
 		</div>
 	</div>
 {:else if selectedWagen === 'Wagen 3'}
-	<div class="cabin3">
-		<div class="sensorbox">
-			<div class="card">
-				<div class="card-body">
-					<h5>Eingangsbereich</h5>
-					<div class="GUID">GUID: 042743284324242</div>
-					<span class="badge text-bg-success">Connected</span>
-					<br />
-					<br />
-					<button
-						class="btn btn-primary"
-						type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#collapseExample"
-						aria-expanded="false"
-						aria-controls="collapseExample"
-					>
-						<span class="material-symbols-outlined"> expand_more </span>
-						3 Sensors associated
-					</button>
-				</div>
-			</div>
-
-			<div class="row sensorboxes">
-				<div class="col">
-					<div class="collapse" id="collapseExample">
-						<div class="card card-body">
-							<h6>Temperatur</h6>
-							<div class="GUID">GUID: 042743284324242</div>
-							<span class="badge text-bg-success small">Connected</span>
-							<div class="sensorvalue">27.5 °C</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col">
-					<div class="collapse" id="collapseExample">
-						<div class="card card-body">
-							<h6>Luftfeuchtigkeit</h6>
-							<div class="GUID">GUID: 042743284324242</div>
-							<span class="badge text-bg-success small">Connected</span>
-							<div class="sensorvalue">71. 3%</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col">
-					<div class="collapse" id="collapseExample">
-						<div class="card card-body">
-							<h6>CO2 (Luftqualität)</h6>
-							<div class="GUID">GUID: 042743284324242</div>
-							<span class="badge text-bg-success small">Connected</span>
-							<div class="sensorvalue">432 ppm</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-{/if}
+	<p>test</p>
+{/if} -->
 
 <style>
 	.GUID {

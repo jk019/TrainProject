@@ -4,6 +4,7 @@ export async function load() {
 
     return {
         sections: await db.getSections(),
-        sensors: await db.getSensors()
+        sensors: await db.getSensors(),
+        wagons: await db.getWagons(),
     }
 }
