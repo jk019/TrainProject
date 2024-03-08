@@ -1,9 +1,8 @@
 <script>
 	import axios from 'axios';
 	import { createEventDispatcher } from 'svelte';
-	export let data
 
-
+	export let data;
 
 	let selectedWagen = 'Wagen 1'; // Default selected item
 	// @ts-ignore
@@ -13,6 +12,15 @@
 </script>
 
 <h1>Sensoren</h1>
+
+<h3>Sections</h3>
+{#each data.sections as section}
+	<p>{section.section_name}</p>
+	{#each data.sensors as sensor}
+	{#if sensor.section_id == section._id}
+		<p>{sensor.value}</p>{/if}
+{/each}
+{/each}
 
 
 
@@ -172,7 +180,7 @@
 				<div class="col">
 					<div class="collapse" id="collapseExample2">
 						<div class="card card-body empty">
-							<h6></h6>
+							<h6>x</h6>
 							<div class="GUID"></div>
 							<span class="badge text-bg-success small"></span>
 							<div class="sensorvalue"></div>
@@ -182,7 +190,7 @@
 				<div class="col">
 					<div class="collapse" id="collapseExample2">
 						<div class="card card-body empty">
-							<h6></h6>
+							<h6>x</h6>
 							<div class="GUID"></div>
 							<span class="badge text-bg-success small"></span>
 							<div class="sensorvalue"></div>
@@ -323,7 +331,7 @@
 				<div class="col">
 					<div class="collapse" id="collapseExample2">
 						<div class="card card-body empty">
-							<h6></h6>
+							<h6>x</h6>
 							<div class="GUID"></div>
 							<span class="badge text-bg-success small"></span>
 							<div class="sensorvalue"></div>
@@ -333,7 +341,7 @@
 				<div class="col">
 					<div class="collapse" id="collapseExample2">
 						<div class="card card-body empty">
-							<h6></h6>
+							<h6>x</h6>
 							<div class="GUID"></div>
 							<span class="badge text-bg-success small"></span>
 							<div class="sensorvalue"></div>
@@ -413,7 +421,7 @@
 				<div class="col">
 					<div class="collapse" id="collapseExample2">
 						<div class="card card-body empty">
-							<h6></h6>
+							<h6>x</h6>
 							<div class="GUID"></div>
 							<span class="badge text-bg-success small"></span>
 							<div class="sensorvalue"></div>
@@ -423,7 +431,7 @@
 				<div class="col">
 					<div class="collapse" id="collapseExample2">
 						<div class="card card-body empty">
-							<h6></h6>
+							<h6>x</h6>
 							<div class="GUID"></div>
 							<span class="badge text-bg-success small"></span>
 							<div class="sensorvalue"></div>

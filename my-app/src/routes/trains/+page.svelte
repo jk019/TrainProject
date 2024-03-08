@@ -1,6 +1,7 @@
 <script>
 	import axios from 'axios';
 	import { createEventDispatcher } from 'svelte';
+	import { invalidateAll } from "$app/navigation";
 	export let data;
 
 	let selectedWagen = 'Wagen 1'; // Default selected item
@@ -8,19 +9,51 @@
 	function selectWagen(wagen) {
 		selectedWagen = wagen;
 	}
+
+	function printData(){
+		// @ts-ignore
+		console.log(data.train);
+	}
+
+
+	// @ts-ignore
+	function deleteTrain(id) {
+    axios
+      .delete("/api/trains/" + id)
+      .then((response) => {
+        alert("Train deleted");
+        console.log(response.data);
+        invalidateAll(); // reload data
+      })
+      .catch((error) => {
+        console.log(error);
+        alert(error);
+      });
+  }
+
 </script>
+
+<button on:click={printData}>printData</button>
 
 <h1>Trains</h1>
 
-{#each data.trains as d}
+<a href="/trains/create">+ Add Train</a>
+
+{#each data.trains as train}
 	<div class="sensorbox">
 		<div class="card">
 			<div class="card-body">
-				<h5>Zug {d.color}</h5>
-				<div class="GUID">GUID: {d._id}</div>
+				<h5>Zug {train.color}</h5>
+				<div class="GUID">GUID: {train._id}</div>
+				<a href={"/trains/" + train._id}> {train._id}</a>
 				<span class="badge text-bg-success">Connected</span>
 				<br />
 				<br />
+				<button class="btn btn-danger"
+				on:click={() => {
+				  deleteTrain(train._id);
+				}}>X</button
+			  >
 			</div>
 		</div>
 	</div>
@@ -31,37 +64,5 @@
 		color: rgb(129, 127, 127);
 	}
 
-	.sensorboxes {
-		margin-top: 5px;
-		margin-bottom: 5px;
-	}
-
-	.small {
-		width: 90px;
-	}
-
-	.nav-link {
-		color: black;
-		font-weight: 500;
-	}
-
-	.btn-primary {
-		background-color: white;
-		color: black;
-		border: 0px;
-	}
-
-	.btn-primary:focus {
-		background-color: white;
-		color: black;
-		border: 0px;
-	}
-
-	.empty {
-		border-color: white;
-	}
-
-	.selected {
-		color: purple;
-	}
+	
 </style>
