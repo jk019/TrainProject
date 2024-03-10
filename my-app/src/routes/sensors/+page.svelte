@@ -31,7 +31,7 @@
 			class:selected={$selectedWagon === wagon._id}
 			style="cursor: pointer;"
 		>
-			Wagen {wagon._id}
+			Wagen {wagon.wagon_ISO}
 		</a>
 	{/each}
 </nav>
@@ -42,7 +42,7 @@
 		{#each data.wagons as wagon}
 			{#if $selectedWagon === wagon._id}
 				<!-- Inhalt für den ausgewählten Wagen hier einfügen -->
-				<p>Details für Wagen {wagon._id}</p>
+				<p>Details für Wagen {wagon.wagon_ISO}</p>
 				
 				<!-- Fügen Sie hier Ihre Logik zum Anzeigen von Sektionen und Sensoren basierend auf dem ausgewählten Wagen ein -->
 			{/if}
@@ -56,7 +56,7 @@
 
 
 
-<!-- <h1>Sensoren</h1>
+<h1>Sensoren</h1>
 
 <nav class="nav" style="margin-bottom: 20px;">
 	<a
@@ -378,7 +378,7 @@
 	</div>
 {:else if selectedWagen === 'Wagen 3'}
 	<p>test</p>
-{/if} -->
+{/if}
 
 <style>
 	.GUID {
