@@ -105,8 +105,7 @@
 	}
 
 	.sensorboxes {
-		margin-top: 5px;
-		margin-bottom: 5px;
+		margin: 5px;
 	}
 
 	.small {
@@ -128,10 +127,6 @@
 		background-color: white;
 		color: black;
 		border: 0px;
-	}
-
-	.empty {
-		border-color: white;
 	}
 
 	.selected {
