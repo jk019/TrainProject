@@ -7,8 +7,29 @@
       "_internal.js"
     ]
   },
+  "_client.js": {
+    "file": "chunks/client.js",
+    "imports": [
+      "_exports.js"
+    ]
+  },
+  "_db.js": {
+    "file": "chunks/db.js",
+    "imports": [
+      "_client.js"
+    ]
+  },
   "_exports.js": {
     "file": "chunks/exports.js"
+  },
+  "_index.js": {
+    "file": "chunks/index.js"
+  },
+  "_index2.js": {
+    "file": "chunks/index2.js",
+    "imports": [
+      "_ssr.js"
+    ]
   },
   "_internal.js": {
     "file": "chunks/internal.js",
@@ -25,15 +46,7 @@
     "isEntry": true,
     "imports": [
       "_ssr.js",
-      "_exports.js"
-    ]
-  },
-  "node_modules/@sveltejs/kit/src/runtime/components/layout.svelte": {
-    "file": "entries/fallbacks/layout.svelte.js",
-    "src": "node_modules/@sveltejs/kit/src/runtime/components/layout.svelte",
-    "isEntry": true,
-    "imports": [
-      "_ssr.js"
+      "_client.js"
     ]
   },
   "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
@@ -42,13 +55,107 @@
     "isEntry": true,
     "imports": [
       "_internal.js",
+      "_index.js",
       "_exports.js",
+      "_index2.js"
+    ]
+  },
+  "src/routes/+layout.svelte": {
+    "file": "entries/pages/_layout.svelte.js",
+    "src": "src/routes/+layout.svelte",
+    "isEntry": true,
+    "imports": [
       "_ssr.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_layout.CT4mUbuD.css"
     ]
   },
   "src/routes/+page.svelte": {
     "file": "entries/pages/_page.svelte.js",
     "src": "src/routes/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "src/routes/api/trains/+server.js": {
+    "file": "entries/endpoints/api/trains/_server.js",
+    "src": "src/routes/api/trains/+server.js",
+    "isEntry": true,
+    "imports": [
+      "_db.js",
+      "_index.js"
+    ]
+  },
+  "src/routes/api/trains/[train_id]/+server.js": {
+    "file": "entries/endpoints/api/trains/_train_id_/_server.js",
+    "src": "src/routes/api/trains/[train_id]/+server.js",
+    "isEntry": true,
+    "imports": [
+      "_db.js",
+      "_index.js"
+    ]
+  },
+  "src/routes/sensors/+page.server.js": {
+    "file": "entries/pages/sensors/_page.server.js",
+    "src": "src/routes/sensors/+page.server.js",
+    "isEntry": true,
+    "imports": [
+      "_db.js"
+    ]
+  },
+  "src/routes/sensors/+page.svelte": {
+    "file": "entries/pages/sensors/_page.svelte.js",
+    "src": "src/routes/sensors/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_index2.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.CieZaaTP.css"
+    ]
+  },
+  "src/routes/trains/+page.server.js": {
+    "file": "entries/pages/trains/_page.server.js",
+    "src": "src/routes/trains/+page.server.js",
+    "isEntry": true,
+    "imports": [
+      "_db.js"
+    ]
+  },
+  "src/routes/trains/+page.svelte": {
+    "file": "entries/pages/trains/_page.svelte.js",
+    "src": "src/routes/trains/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_client.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.BOienLJ_.css"
+    ]
+  },
+  "src/routes/trains/[train_id]/+page.server.js": {
+    "file": "entries/pages/trains/_train_id_/_page.server.js",
+    "src": "src/routes/trains/[train_id]/+page.server.js",
+    "isEntry": true,
+    "imports": [
+      "_db.js"
+    ]
+  },
+  "src/routes/trains/[train_id]/+page.svelte": {
+    "file": "entries/pages/trains/_train_id_/_page.svelte.js",
+    "src": "src/routes/trains/[train_id]/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "src/routes/trains/create/+page.svelte": {
+    "file": "entries/pages/trains/create/_page.svelte.js",
+    "src": "src/routes/trains/create/+page.svelte",
     "isEntry": true,
     "imports": [
       "_ssr.js"

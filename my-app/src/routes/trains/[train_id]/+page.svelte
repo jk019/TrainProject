@@ -1,6 +1,5 @@
 <script>
 	import axios from 'axios';
-	import { build } from 'vite';
 	export let data;
 
 	let train = data.train;
